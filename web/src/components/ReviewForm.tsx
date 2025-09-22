@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { X, Star } from 'lucide-react';
 import type { Review, CreateReviewDto, UpdateReviewDto } from '../types';
-import { reviewService } from '../services/api';
+import { create as createReview, update as updateReview } from '../services/review';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
@@ -50,13 +50,13 @@ export const ReviewForm = ({ productId, review, onSubmit, onCancel }: ReviewForm
           _id: review._id,
           ...formData
         };
-        await reviewService.update(review._id, updateData);
+        await updateReview(review._id, updateData);
       } else {
         const createData: CreateReviewDto = {
           ...formData,
           productId
         };
-        await reviewService.create(createData);
+        await createReview(createData);
       }
       onSubmit();
     } catch (err) {

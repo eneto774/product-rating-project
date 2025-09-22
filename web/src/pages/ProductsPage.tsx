@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Plus, Edit, Trash2 } from 'lucide-react'
 import type { Product } from '../types'
-import { productService } from '../services/api'
+import * as productService from '../services/product'
 import { Button } from '../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { ProductForm } from '../components/ProductForm'
@@ -35,7 +35,7 @@ export function ProductsPage() {
     if (!confirm('Tem certeza que deseja excluir este produto?')) return
     
     try {
-      await productService.delete(id)
+      await productService.deleteOne(id)
       setProducts(products.filter(p => p._id !== id))
     } catch (err) {
       setError('Erro ao excluir produto')

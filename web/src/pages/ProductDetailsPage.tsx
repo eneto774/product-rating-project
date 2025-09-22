@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { ArrowLeft, Star, Edit, Trash2, Plus } from 'lucide-react'
 import type { Product, Review } from '../types'
-import { productService, reviewService } from '../services/api'
+import { getByProductId as getReviewByProductId, getAverageRating as getAverageProductRating, deleteOne as deleteById } from '../services/review'
+import { getById as getProductById } from '../services/product'
 import { Button } from '../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { ReviewForm } from '../components/ReviewForm'
@@ -29,9 +30,9 @@ export function ProductDetailsPage() {
     try {
       setLoading(true)
       const [productData, reviewsData, avgRating] = await Promise.all([
-        productService.getById(id),
-        reviewService.getByProductId(id),
-        reviewService.getAverageRating(id)
+        getProductById(id),
+        getReviewByProductId(id),
+        getAverageProductRating(id)
       ])
       
       setProduct(productData)
@@ -49,11 +50,11 @@ export function ProductDetailsPage() {
     if (!confirm('Tem certeza que deseja excluir esta avaliação?')) return
     
     try {
-      await reviewService.delete(reviewId)
+      await deleteById(reviewId)
       setReviews(reviews.filter(r => r._id !== reviewId))
       
       if (id) {
-        const avgRating = await reviewService.getAverageRating(id)
+        const avgRating = await getAverageProductRating(id)
         setAverageRating(Number(avgRating) || 0)
       }
     } catch (err) {

@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "2b98eb33-32c6-49bb-96d1-0f4eb18d3d1d",
+		"name": "DFCom Products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29386462"
+	},
+	"item": [
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								":id"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "68cff28ad6ff24b991c305f6",
+									"disabled": true
+								},
+								{
+									"key": null,
+									"value": "68cff28ad6ff24b991c305f6",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "68d03dd29282282ebb2b817b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Guitarra Gibson Custom 2000\",\r\n    \"description\": \"Serve para fazer uma boa música.\",\r\n    \"price\": 27500.00,\r\n    \"category\": \"Instrumentos Musicais\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/product",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"68d03dd29282282ebb2b817b\",\r\n    \"name\": \"Guitarra Gibson Custom 60\",\r\n    \"description\": \"Serve para fazer uma boa música...\",\r\n    \"price\": 37500,\r\n    \"category\": \"Instrumentos Musicais\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/product/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "68d03dd29282282ebb2b817b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "68cff28ad6ff24b991c305f6"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "review",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"68d03dd29282282ebb2b817b\",\r\n    \"author\": \"José de Arimateia\",\r\n    \"rating\": 1,\r\n    \"comment\": \"Guitarra maravilhosa, muito confortavel.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/review",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"68d03dd29282282ebb2b817b\",\r\n    \"author\": \"Edgar Ribeiro\",\r\n    \"rating\": 5,\r\n    \"comment\": \"Guitarra maravilhosa, muito confortavel. (editado)\",\r\n    \"createdAt\": \"2025-09-21T18:20:36.876Z\",\r\n    \"_id\": \"68d041f476793befd61f608d\",\r\n    \"__v\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/review/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"review",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "68d041f476793befd61f608d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-productId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/review/product/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"review",
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "68d03dd29282282ebb2b817b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-average-rating-by-productId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/review/average-rating/product/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"review",
+								"average-rating",
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "68d03dd29282282ebb2b817b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/review/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"review",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "68d041f476793befd61f608d"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

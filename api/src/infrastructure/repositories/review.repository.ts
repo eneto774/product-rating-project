@@ -21,9 +21,10 @@ export default class ReviewRepository implements IReviewRepository {
 
       const result = (await createdReview.save()) as unknown as Review;
 
-      // this._logger.log(
-      //   `[ReviewRepository:create] - Review ${result.name} with id: ${result?._id} created successfully.`,
-      // );
+      this._logger.log(
+        `[ReviewRepository:create] - Review with id: ${result?._id} created successfully.`,
+      );
+
       return result;
     } catch (error) {
       this._logger.error(
@@ -47,7 +48,7 @@ export default class ReviewRepository implements IReviewRepository {
         .findByIdAndUpdate(review._id, updatedData, { new: true })
         .exec()) as unknown as Review;
       this._logger.log(
-        `[ReviewRepository:update] - Review ${review.author} with id: ${review?.productId} updated successfully.`,
+        `[ReviewRepository:update] - Review with id: ${review?.productId} updated successfully.`,
       );
 
       return updatedReview;

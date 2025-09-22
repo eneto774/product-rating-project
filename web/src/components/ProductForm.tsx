@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import type { Product, CreateProductDto, UpdateProductDto } from '../types';
-import { productService } from '../services/api';
+import { create as createProduct, update as updateProduct } from '../services/product';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
@@ -56,10 +56,10 @@ export const ProductForm = ({ product, onSubmit, onCancel }: ProductFormProps) =
           _id: product._id,
           ...formData
         };
-        await productService.update(product._id, updateData);
+        await updateProduct(product._id, updateData);
       } else {
         const createData: CreateProductDto = formData;
-        await productService.create(createData);
+        await createProduct(createData);
       }
       onSubmit();
     } catch (err) {
